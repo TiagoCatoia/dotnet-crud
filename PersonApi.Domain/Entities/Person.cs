@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace;
+﻿namespace PersonApi.Domain.Entities;
 
 public class Person
 {

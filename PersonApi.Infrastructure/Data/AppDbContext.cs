@@ -1,8 +1,9 @@
-﻿namespace DefaultNamespace;
+﻿using Microsoft.EntityFrameworkCore;
+using PersonApi.Domain.Entities;
 
-public class AppDbContext : DbContext
+namespace PersonApi.Infrastructure.Data;
+
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
-    public AppDbContext(DbContextOption<AppDbContex> options) : base(options) {}
-
-    public DbSet<Person> People => Set<Person>(); // get { return Set<Person>(); }
+    public DbSet<Person> People => Set<Person>();
 }
