@@ -9,7 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PersonApi.Domain\PersonApi.Domain.csproj" />
+    <ProjectReference Include="..\PersonApi.Infrastructure\PersonApi.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
