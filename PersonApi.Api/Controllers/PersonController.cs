@@ -16,12 +16,12 @@ public class PersonController(IPersonRepository repository) : ControllerBase
         return Ok(persons);
     }
     
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetById(int id)
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById(Guid id)
     {
         var person = await repository.GetByIdAsync(id);
         if (person == null)
-            return ErrorResponseHelper.NotFound($"Person with ID {{person.Id}} not found.", HttpContext);
+            return ErrorResponseHelper.NotFound($"Person with ID {id} not found.", HttpContext);
 
         return Ok(person);
     }
@@ -48,8 +48,8 @@ public class PersonController(IPersonRepository repository) : ControllerBase
         return NoContent();
     }
     
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Delete(int id)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
     {
         var existing = await repository.GetByIdAsync(id);
         if (existing == null)

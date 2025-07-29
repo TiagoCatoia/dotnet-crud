@@ -9,7 +9,7 @@ public class PersonRepository(AppDbContext _context) : IPersonRepository
 {
     public async Task<IEnumerable<Person>> GetAllAsync() => await _context.People.ToListAsync();
 
-    public async Task<Person?> GetByIdAsync(int id) => await _context.People.FindAsync(id);
+    public async Task<Person?> GetByIdAsync(Guid id) => await _context.People.FindAsync(id);
 
     public async Task AddAsync(Person person)
     {
@@ -23,7 +23,7 @@ public class PersonRepository(AppDbContext _context) : IPersonRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Guid id)
     {
         var person = await _context.People.FindAsync(id);
 
