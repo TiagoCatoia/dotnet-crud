@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using PersonApi.Api.Helpers;
+using PersonApi.Application.DTOs.Person;
 using PersonApi.Domain.Entities;
 using PersonApi.Domain.Repositories;
 
@@ -7,7 +9,7 @@ namespace PersonApi.Api.Controllers;
 
 [ApiController]
 [Route("api/person")]
-public class PersonController(IPersonRepository repository) : ControllerBase
+public class PersonController(IPersonRepository repository, IMapper mapper) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Person>>> GetAll()
@@ -27,22 +29,22 @@ public class PersonController(IPersonRepository repository) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Person person)
+    public async Task<IActionResult> Create(CreatePersonDto dto)
     {
-        var existing = await repository.GetByIdAsync(person.Id);
-        if (existing != null)
-            return ErrorResponseHelper.Conflict("There is already a person with this ID.", HttpContext);
-        
+        var person = mapper.Map<Person>(dto);
         await repository.AddAsync(person);
         return CreatedAtAction(nameof(GetById), new { id = person.Id }, person);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> Update(Person person)
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, UpdatePersonDto dto)
     {
-        var existing = await repository.GetByIdAsync(person.Id);
-        if (existing == null)
-            return ErrorResponseHelper.NotFound($"Person with ID {person.Id} not found.", HttpContext);
+        var person = await repository.GetByIdAsync(id);
+        if (person == null)
+            return ErrorResponseHelper.NotFound($"Person with ID {id} not found.", HttpContext);
+        
+        person.Name = dto.Name ?? person.Name;
+        person.Age = dto.Age ?? person.Age;
         
         await repository.UpdateAsync(person);
         return NoContent();

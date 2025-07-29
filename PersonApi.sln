@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonApi.Domain", "PersonA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonApi.Infrastructure", "PersonApi.Infrastructure\PersonApi.Infrastructure.csproj", "{94AEA00E-19F3-49C8-8CB8-C90E75458C20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonApi.Application", "PersonApi.Application\PersonApi.Application.csproj", "{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{94AEA00E-19F3-49C8-8CB8-C90E75458C20}.Release|x64.Build.0 = Release|Any CPU
 		{94AEA00E-19F3-49C8-8CB8-C90E75458C20}.Release|x86.ActiveCfg = Release|Any CPU
 		{94AEA00E-19F3-49C8-8CB8-C90E75458C20}.Release|x86.Build.0 = Release|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Debug|x64.Build.0 = Debug|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Debug|x86.Build.0 = Debug|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Release|x64.ActiveCfg = Release|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Release|x64.Build.0 = Release|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Release|x86.ActiveCfg = Release|Any CPU
+		{7D81C718-2BB6-462E-A06B-E31E9C83B0D7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
