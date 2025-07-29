@@ -42,7 +42,7 @@ public class PersonController(IPersonRepository repository) : ControllerBase
     {
         var existing = await repository.GetByIdAsync(person.Id);
         if (existing == null)
-            return ErrorResponseHelper.NotFound($"Person with ID {{person.Id}} not found.", HttpContext);
+            return ErrorResponseHelper.NotFound($"Person with ID {person.Id} not found.", HttpContext);
         
         await repository.UpdateAsync(person);
         return NoContent();
