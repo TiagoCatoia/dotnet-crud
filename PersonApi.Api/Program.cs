@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using PersonApi.Domain.Entities;
+using PersonApi.Application.Mappings;
 using PersonApi.Domain.Repositories;
 using PersonApi.Infrastructure.Data;
 using PersonApi.Infrastructure.Repositories;
@@ -18,13 +18,16 @@ builder.Services.AddSwaggerGen();
 // Add support to controllers
 builder.Services.AddControllers();
 
+builder.Services.AddAutoMapper(typeof(PersonProfile).Assembly);
+
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseDeveloperExceptionPage();
+    app.UseExceptionHandler("/error");
 }
 else
 {

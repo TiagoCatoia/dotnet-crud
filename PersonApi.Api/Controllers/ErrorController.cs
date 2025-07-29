@@ -4,7 +4,7 @@ using PersonApi.Api.Models;
 
 namespace PersonApi.Api.Controllers;
 
-public class ErrorController(ILogger<ErrorController> _logger): ControllerBase
+public class ErrorController(ILogger<ErrorController> logger): ControllerBase
 {
     [Route("error")]
     [HttpGet]
@@ -13,7 +13,7 @@ public class ErrorController(ILogger<ErrorController> _logger): ControllerBase
         var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
         var exception = context?.Error;
         
-        _logger.LogError(exception, "Unhandled error on path {Path} with TraceId {TraceId}", HttpContext.Request.Path, HttpContext.TraceIdentifier);
+        logger.LogError(exception, "Unhandled error on path {Path} with TraceId {TraceId}", HttpContext.Request.Path, HttpContext.TraceIdentifier);
 
         var error = new ApiError
         {
