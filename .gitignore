@@ -1,24 +1,19 @@
-# Build Folders
-bin/
-obj/
+# Build folders
+**/bin/
+**/obj/
 
-# Rider IDE files (se usar Rider)
-*.sln.iml
+# Rider
 .idea/
 
-# User-specific files
+# Visual Studio
+.vs/
 *.user
 *.suo
 
-# Visual Studio files
-.vs/
-
-# Logs
+# Log e temp
 *.log
-
-# temp files
 *.tmp
 *.cache
 
-# publish
+# Publicação
 publish/
