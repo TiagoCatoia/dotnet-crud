@@ -24,6 +24,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/error");
 }
 
 // app.MapGet("/people", async (IPersonRepository repo) => await repo.GetAllAsync());
