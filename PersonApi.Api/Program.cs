@@ -4,6 +4,7 @@ using PersonApi.Domain.Repositories;
 using PersonApi.Infrastructure.Data;
 using PersonApi.Infrastructure.Repositories;
 using PersonApi.Api.Configurations;
+using PersonApi.Api.Services.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 DotNetEnv.Env.Load();
@@ -11,8 +12,10 @@ DotNetEnv.Env.Load();
 // Add DbContext (in-memory for tests)
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("PersonDb"));
 
-// Inject repository
+// Inject person repository
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+// Inject auth service
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -30,7 +33,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseExceptionHandler("/error");
+    app.UseDeveloperExceptionPage();
 }
 else
 {
