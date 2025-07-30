@@ -11,7 +11,8 @@ public class PersonRepository(AppDbContext context) : IPersonRepository
 
     public async Task<Person?> GetByIdAsync(Guid id) => await context.People.FindAsync(id);
     
-    public async Task<Person?> GetByEmailAsync(string email) => await context.People.FindAsync(email);
+    public async Task<Person?> GetByEmailAsync(string email) => 
+        await context.People.FirstOrDefaultAsync(p => p.Email == email);
 
     public async Task AddAsync(Person person)
     {

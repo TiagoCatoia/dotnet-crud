@@ -9,6 +9,9 @@ using PersonApi.Api.Services.Authentication;
 var builder = WebApplication.CreateBuilder(args);
 DotNetEnv.Env.Load();
 
+builder.Configuration
+    .AddEnvironmentVariables();
+
 // Add DbContext (in-memory for tests)
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("PersonDb"));
 
