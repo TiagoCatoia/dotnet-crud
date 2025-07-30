@@ -3,8 +3,10 @@ using PersonApi.Application.Mappings;
 using PersonApi.Domain.Repositories;
 using PersonApi.Infrastructure.Data;
 using PersonApi.Infrastructure.Repositories;
+using PersonApi.Api.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
+DotNetEnv.Env.Load();
 
 // Add DbContext (in-memory for tests)
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("PersonDb"));
@@ -20,6 +22,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(typeof(PersonProfile).Assembly);
 
+builder.Services.AddJwtAuthentication(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 
@@ -33,24 +36,6 @@ else
 {
     app.UseExceptionHandler("/error");
 }
-
-// app.MapGet("/people", async (IPersonRepository repo) => await repo.GetAllAsync());
-// app.MapGet("/people/{id}", async (int id, IPersonRepository repo) => await repo.GetByIdAsync(id));
-// app.MapPost("/people", async (Person p, IPersonRepository repo) =>
-// {
-//     await repo.AddAsync(p);
-//     return Results.Created($"/people/{p.Id}", p);
-// });
-// app.MapPut("/people/{id}", async (int id, Person p, IPersonRepository repo) =>
-// {
-//     await repo.UpdateAsync(p);
-//     return Results.NoContent();
-// });
-// app.MapDelete("/people", async (int id, IPersonRepository repo) =>
-// {
-//     await repo.DeleteAsync(id);
-//     return Results.NoContent();
-// });
 
 app.MapControllers();
 
