@@ -8,7 +8,8 @@ public class PersonProfile : Profile
 {
     public PersonProfile()
     {
-        CreateMap<CreatePersonDto, Person>();
+        CreateMap<CreatePersonDto, Person>()
+            .ForMember(dest => dest.PasswordHash, opt => opt.Ignore());
         CreateMap<Person, PersonResponseDto>();
     }
 }
