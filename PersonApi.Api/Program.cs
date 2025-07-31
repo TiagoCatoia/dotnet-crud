@@ -21,7 +21,6 @@ builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 // Add support to controllers
 builder.Services.AddControllers();
@@ -29,6 +28,8 @@ builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(PersonProfile).Assembly);
 
 builder.Services.AddJwtAuthentication(builder.Configuration, builder.Environment);
+
+builder.Services.AddSwaggerWithJwt();
 
 var app = builder.Build();
 
